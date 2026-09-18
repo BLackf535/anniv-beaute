@@ -1,0 +1,322 @@
+/* =========================================================
+   Palette & typographie — "ma Beauté" anniversaire
+   ========================================================= */
+:root{
+  --noir:        #140a10;
+  --bordeaux-1:  #240c18;
+  --bordeaux-2:  #4a1226;
+  --bordeaux-3:  #6d1a34;
+  --or:          #d4af6a;
+  --or-clair:    #f2d9a8;
+  --ivoire:      #f6ecd9;
+  --ivoire-doux: rgba(246,236,217,.72);
+  --rose-poudre: #e3b6c2;
+  --ok:          #9ecb9a;
+  --err:         #e08a8a;
+
+  --serif: 'Cormorant Garamond', 'Georgia', serif;
+  --sans:  'Poppins', 'Segoe UI', sans-serif;
+  --script: 'Parisienne', cursive;
+}
+
+*,*::before,*::after{ box-sizing:border-box; }
+
+html,body{
+  margin:0;
+  padding:0;
+  min-height:100%;
+  background: radial-gradient(ellipse 120% 60% at 50% -10%, var(--bordeaux-3) 0%, var(--bordeaux-1) 45%, var(--noir) 100%);
+  color: var(--ivoire);
+  font-family: var(--sans);
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+}
+
+body{
+  min-height:100vh;
+  position:relative;
+  overflow-x:hidden;
+}
+
+::selection{ background: var(--or); color: var(--noir); }
+
+/* ---------------------------------------------------------
+   Layout de base
+   --------------------------------------------------------- */
+.page{
+  position:relative;
+  z-index:2;
+  max-width: 620px;
+  margin: 0 auto;
+  padding: clamp(48px, 9vh, 96px) clamp(22px, 6vw, 40px) 90px;
+}
+
+.eyebrow{
+  display:block;
+  text-align:center;
+  font-family: var(--script);
+  color: var(--rose-poudre);
+  font-size: clamp(20px, 4.5vw, 26px);
+  margin: 0 0 4px;
+}
+
+h1.titre{
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 600;
+  text-align:center;
+  color: var(--ivoire);
+  font-size: clamp(30px, 7vw, 46px);
+  line-height:1.15;
+  margin: 0 0 30px;
+  text-shadow: 0 6px 30px rgba(0,0,0,.5);
+}
+
+.filet{
+  width: 64px;
+  height: 1px;
+  margin: 34px auto;
+  background: linear-gradient(90deg, transparent, var(--or), transparent);
+}
+
+.texte{
+  font-size: clamp(15px, 2.1vw, 17px);
+  line-height: 1.9;
+  color: var(--ivoire-doux);
+  font-weight: 300;
+}
+.texte p{ margin: 0 0 20px; }
+.texte p:last-child{ margin-bottom:0; }
+.texte .signature{
+  font-family: var(--script);
+  color: var(--or-clair);
+  font-size: clamp(22px, 5vw, 28px);
+  display:block;
+  margin-top: 28px;
+  text-align:right;
+}
+
+/* ---------------------------------------------------------
+   Boutons
+   --------------------------------------------------------- */
+.actions{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap: 16px;
+  margin-top: 46px;
+}
+
+.bouton{
+  appearance:none;
+  border: 1px solid var(--or);
+  background: transparent;
+  color: var(--or-clair);
+  font-family: var(--sans);
+  font-size: 14px;
+  letter-spacing: .04em;
+  padding: 14px 34px;
+  border-radius: 999px;
+  cursor:pointer;
+  text-decoration:none;
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  transition: background .35s ease, color .35s ease, transform .25s ease, box-shadow .35s ease;
+  min-width: 240px;
+  justify-content:center;
+}
+.bouton:hover{
+  background: var(--or);
+  color: var(--noir);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(212,175,106,.25);
+}
+.bouton:active{ transform: translateY(0); }
+
+.bouton.secondaire{
+  border-color: rgba(246,236,217,.35);
+  color: var(--ivoire-doux);
+}
+.bouton.secondaire:hover{
+  background: rgba(246,236,217,.1);
+  color: var(--ivoire);
+  box-shadow:none;
+}
+
+.bouton.indice{
+  border-color: var(--rose-poudre);
+  color: var(--rose-poudre);
+}
+.bouton.indice:hover{
+  background: var(--rose-poudre);
+  color: var(--noir);
+  box-shadow: 0 10px 28px rgba(227,182,194,.25);
+}
+
+/* ---------------------------------------------------------
+   Modales (vidéo & indice)
+   --------------------------------------------------------- */
+.voile{
+  position:fixed;
+  inset:0;
+  z-index:80;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding: 22px;
+  background: rgba(10,5,9,.85);
+  backdrop-filter: blur(3px);
+}
+.voile.ouvert{ display:flex; }
+
+.boite{
+  position:relative;
+  width:100%;
+  max-width: 460px;
+  background: linear-gradient(160deg, var(--bordeaux-2), var(--bordeaux-1));
+  border: 1px solid rgba(212,175,106,.35);
+  border-radius: 14px;
+  padding: 34px 26px;
+  text-align:center;
+  box-shadow: 0 30px 80px rgba(0,0,0,.55);
+  animation: apparition .4s ease;
+}
+@keyframes apparition{
+  from{ opacity:0; transform: translateY(14px) scale(.98); }
+  to{ opacity:1; transform: translateY(0) scale(1); }
+}
+
+.boite h2{
+  font-family: var(--serif);
+  font-style: italic;
+  color: var(--or-clair);
+  font-size: 24px;
+  margin: 0 0 16px;
+}
+.boite p{
+  color: var(--ivoire-doux);
+  font-size: 15px;
+  line-height:1.7;
+  margin: 0;
+}
+.boite video{
+  width:100%;
+  border-radius: 8px;
+  display:block;
+}
+
+.fermer{
+  position:absolute;
+  top: 12px; right: 14px;
+  background:none;
+  border:none;
+  color: var(--ivoire-doux);
+  font-size: 20px;
+  cursor:pointer;
+  line-height:1;
+  padding: 6px;
+}
+.fermer:hover{ color: var(--or-clair); }
+
+/* ---------------------------------------------------------
+   Écran de verrouillage
+   --------------------------------------------------------- */
+.verrou{
+  position:fixed;
+  inset:0;
+  z-index:100;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding: 24px;
+  background: radial-gradient(ellipse 120% 60% at 50% -10%, var(--bordeaux-3) 0%, var(--bordeaux-1) 45%, var(--noir) 100%);
+}
+.verrou.caché{ display:none; }
+
+.verrou-carte{
+  width:100%;
+  max-width: 340px;
+  text-align:center;
+}
+.verrou-carte .icone{
+  font-size: 30px;
+  margin-bottom: 14px;
+  opacity:.85;
+}
+.verrou-carte h1{
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 28px;
+  color: var(--ivoire);
+  margin: 0 0 8px;
+}
+.verrou-carte p{
+  color: var(--ivoire-doux);
+  font-size: 14px;
+  margin: 0 0 26px;
+}
+.verrou-carte input{
+  width:100%;
+  background: rgba(246,236,217,.06);
+  border: 1px solid rgba(212,175,106,.4);
+  color: var(--ivoire);
+  font-family: var(--sans);
+  font-size: 15px;
+  text-align:center;
+  letter-spacing: .06em;
+  padding: 13px 16px;
+  border-radius: 999px;
+  outline:none;
+  margin-bottom: 16px;
+}
+.verrou-carte input:focus{ border-color: var(--or); }
+.verrou-carte .erreur{
+  color: var(--err);
+  font-size: 13px;
+  height: 16px;
+  margin-bottom: 10px;
+}
+.verrou-carte.secoue{ animation: secousse .4s; }
+@keyframes secousse{
+  0%,100%{ transform: translateX(0); }
+  20%{ transform: translateX(-8px); }
+  40%{ transform: translateX(8px); }
+  60%{ transform: translateX(-6px); }
+  80%{ transform: translateX(6px); }
+}
+
+.contenu{ display:none; }
+.contenu.visible{ display:block; }
+
+/* ---------------------------------------------------------
+   Paillettes (canvas plein écran, décoratif, discret)
+   --------------------------------------------------------- */
+#paillettes{
+  position:fixed;
+  inset:0;
+  z-index:1;
+  pointer-events:none;
+}
+
+/* ---------------------------------------------------------
+   Divers
+   --------------------------------------------------------- */
+.retour{
+  display:block;
+  text-align:center;
+  margin-top: 54px;
+  font-size: 12px;
+  color: rgba(246,236,217,.4);
+  text-decoration:none;
+  letter-spacing:.05em;
+}
+.retour:hover{ color: var(--or-clair); }
+
+@media (max-width: 380px){
+  .bouton{ min-width: 0; width:100%; }
+}
+
+@media (prefers-reduced-motion: reduce){
+  *{ animation-duration: .01ms !important; animation-iteration-count:1 !important; }
+}

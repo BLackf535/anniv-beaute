@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Pour ma Beauté</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,600&family=Parisienne&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<canvas id="paillettes"></canvas>
+
+<!-- ===================== Écran de verrouillage ===================== -->
+<div class="verrou" id="verrou">
+  <div class="verrou-carte" id="verrou-carte">
+    <div class="icone">🔒</div>
+    <h1>Pour toi seule</h1>
+    <p>Cette page t'est réservée, ma Beauté.</p>
+    <form id="verrou-form">
+      <input type="password" id="verrou-input" placeholder="Mot de passe" autocomplete="off" required>
+      <div class="erreur" id="verrou-erreur"></div>
+      <button type="submit" class="bouton">Ouvrir</button>
+    </form>
+  </div>
+</div>
+
+<!-- ===================== Contenu de la page ===================== -->
+<div class="contenu" id="contenu">
+  <main class="page">
+
+    <span class="eyebrow">Joyeux anniversaire</span>
+    <h1 class="titre">Ma Beauté</h1>
+
+    <div class="texte">
+      <p>Il y a des dates qu’on attend sans vraiment se l’avouer, parce qu’elles nous donnent une raison de plus de dire tout haut ce qu’on pense tout bas depuis longtemps. Aujourd’hui, c’est ton jour, et j’ai envie de prendre le temps de te le dire comme il faut.</p>
+
+<p>Joyeux anniversaire, ma Beauté. Une année de plus pour toi, mais surtout une année de plus durant laquelle j’ai la chance de t’aimer, d’être présent dans ta vie, de te découvrir encore un peu plus, de rire avec toi, de partager des moments inoubliables et de te voir grandir, évoluer et devenir cette femme, cette grande dame que tu mérites de devenir et que, j’en suis certain, tu deviendras.</p>
+
+<p>Alors, pour ce jour si particulier, j’ai voulu t’offrir un peu plus qu’un simple message. Je t’ai préparé un petit chemin, une suite de souvenirs, de mots et de surprises, avec quelques indices en cours de route pour te ramener, étape par étape, vers des lieux qui comptent pour nous. Prends ton temps, savoure chaque étape et laisse-toi guider. J’espère que cette petite aventure te fera sourire autant que j’ai aimé la préparer pour toi.</p>
+
+<p>Mais avant de partir à l’aventure, j’aimerais d’abord que tu fasses 7 vœux pour toi, des vœux que tu veux vraiment voir se réaliser, et que tu les gardes précieusement dans ton cœur, car tu vas les utiliser tout au long de l’aventure. Et bien sûr, j’ai encore deux ou trois petites choses à te montrer ici avant que tout commence...</p>
+
+<span class="signature">— Ferdinand, qui t’aime beaucoup, beaucoup</span>
+
+    </div>
+
+    <div class="filet"></div>
+
+    <div class="actions">
+      <button class="bouton secondaire" onclick="ouvrirModale('modale-video')">🎬 Une petite vidéo pour toi</button>
+      <a class="bouton" href="photos.html">📸 Nos 20 souvenirs</a>
+      <button class="bouton indice" onclick="ouvrirModale('modale-indice')">🎁 Un indice pour la suite</button>
+    </div>
+
+  </main>
+</div>
+
+<!-- ===================== Modale vidéo ===================== -->
+<div class="voile" id="modale-video">
+  <div class="boite">
+    <button class="fermer" onclick="fermerModale('modale-video')">✕</button>
+    <h2>Pour toi</h2>
+    <!-- Remplace "videos/video1.mp4" par le chemin de ta vraie vidéo -->
+    <video controls playsinline poster="">
+      <source src="videos/video1.mp4" type="video/mp4">
+      Ton navigateur ne peut pas lire cette vidéo.
+    </video>
+  </div>
+</div>
+
+<!-- ===================== Modale indice ===================== -->
+<div class="voile" id="modale-indice">
+  <div class="boite">
+    <button class="fermer" onclick="fermerModale('modale-indice')">✕</button>
+    <h2>Premier indice</h2>
+    <p>Retourne là où j'ai obtenu ton numéro pour la toute première fois… là où, sans le savoir encore, toute notre histoire a commencé.</p>
+  </div>
+</div>
+
+<script src="assets/lock.js"></script>
+<script src="assets/sparkle.js"></script>
+<script>
+  document.addEventListener("beaute:deverrouille", function(){
+    if(window.explosionConfettis) setTimeout(window.explosionConfettis, 300);
+  });
+</script>
+</body>
+</html>

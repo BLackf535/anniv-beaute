@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>100 raisons de t'aimer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,600&family=Parisienne&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+  .raisons{
+    list-style:none; counter-reset: raison; margin: 0; padding:0;
+    columns: 1; column-gap: 34px;
+  }
+  @media (min-width: 560px){ .raisons{ columns: 2; } }
+  .raisons li{
+    counter-increment: raison;
+    break-inside: avoid;
+    display:flex; align-items:baseline; gap:10px;
+    font-size: 14.5px; line-height:1.75; color: var(--ivoire-doux);
+    margin-bottom: 14px;
+  }
+  .raisons li::before{
+    content: counter(raison);
+    flex:none;
+    font-family: var(--serif); font-style:italic; color: var(--or);
+    font-size: 15px; min-width: 22px;
+  }
+</style>
+</head>
+<body>
+
+<canvas id="paillettes"></canvas>
+
+<div class="verrou" id="verrou">
+  <div class="verrou-carte" id="verrou-carte">
+    <div class="icone">🔒</div>
+    <h1>Pour toi seule</h1>
+    <p>Cette page t'est réservée, ma Beauté.</p>
+    <form id="verrou-form">
+      <input type="password" id="verrou-input" placeholder="Mot de passe" autocomplete="off" required>
+      <div class="erreur" id="verrou-erreur"></div>
+      <button type="submit" class="bouton">Ouvrir</button>
+    </form>
+  </div>
+</div>
+
+<div class="contenu" id="contenu">
+  <main class="page" style="max-width:680px;">
+
+    <span class="eyebrow">Étape 2</span>
+    <h1 class="titre">100 raisons de t'aimer</h1>
+
+    <p class="texte" style="text-align:center; margin-bottom:34px;">Je pourrais en écrire mille, mais il fallait bien commencer quelque part.</p>
+
+    <ol class="raisons">
+      <li>Parce que ton sourire change la couleur de ma journée.</li>
+      <li>Parce que tu me rassures rien qu'en m'écrivant "bonjour".</li>
+      <li>Parce que ta voix au téléphone efface toute la distance entre nous.</li>
+      <li>Parce que tu crois en moi même quand je doute de moi-même.</li>
+      <li>Parce que tu sais me faire rire dans mes pires journées.</li>
+      <li>Parce que tu es patiente avec mes défauts.</li>
+      <li>Parce que tu es honnête, même quand c'est difficile à dire.</li>
+      <li>Parce que tu prends soin de moi à distance, à ta façon.</li>
+      <li>Parce que tu te souviens des petits détails que je te raconte.</li>
+      <li>Parce que ton regard me donne l'impression d'être important.</li>
+      <li>Parce que tu es forte sans jamais chercher à le montrer.</li>
+      <li>Parce que tu restes toi-même, peu importe qui te regarde.</li>
+      
+      <li>Parce que tu es curieuse de tout, tout le temps.</li>
+      <li>Parce que parler de tes rêves me donne envie de les réaliser avec toi.</li>
+      <li>Parce que tu m'écoutes vraiment, pas juste par politesse.</li>
+      <li>Parce que tu es fière de moi, même pour de petites choses.</li>
+      <li>Parce que tu sais transformer un simple appel en un bon moment.</li>
+      <li>Parce que tu es tendre sans jamais être faible.</li>
+      <li>Parce que tu me pousses à devenir une meilleure version de moi-même.</li>
+      <li>Parce que tu gardes ta bonne humeur même les jours gris.</li>
+      <li>Parce que tu es fidèle à tes valeurs.</li>
+      <li>Parce que tu sais dire "je t'aime" au bon moment.</li>
+      <li>Parce que tes messages du matin me donnent de l'énergie pour la journée.</li>
+      <li>Parce que tu peux me manquer et me faire du bien en même temps.</li>
+      <li>Parce que tu es généreuse avec ceux que tu aimes.</li>
+      <li>Parce que tu ne changes pas pour plaire à tout le monde.</li>
+      <li>Parce que tu es drôle sans même le faire exprès.</li>
+      <li>Parce que tu portes tes rêves avec sérieux.</li>
+      <li>Parce que tu me rends meilleur juste en étant dans ma vie.</li>
+      <li>Parce que tu es douce avec les gens que tu aimes.</li>
+      <li>Parce que tu es exigeante avec toi-même, dans le bon sens.</li>
+      <li>Parce que tu sais reconnaître tes torts.</li>
+      <li>Parce que tu es fière de tes origines et de qui tu es.</li>
+      <li>Parce que tu prends le temps de comprendre avant de juger.</li>
+      <li>Parce que ta présence, même à distance, me rassure.</li>
+      <li>Parce que tu gardes espoir même quand tout semble compliqué.</li>
+      <li>Parce que tu es une amie avant d'être ma copine.</li>
+      <li>Parce que tu es complice avec moi, même dans le silence.</li>
+      <li>Parce que tu ne baisses jamais les bras facilement.</li>
+      <li>Parce que tu es une source de motivation pour moi.</li>
+      <li>Parce que tu rends chaque "au revoir" plus doux avec un "à bientôt".</li>
+      <li>Parce que tu transformes une simple soirée en souvenir.</li>
+      <li>Parce que tu es sincère dans tes compliments.</li>
+      <li>Parce que tu peux me calmer rien qu'en me parlant.</li>
+      <li>Parce que tu es ambitieuse pour ton avenir.</li>
+      <li>Parce que tu restes toi-même même loin de chez toi.</li>
+      <li>Parce que tu sais apprécier les petites choses de la vie.</li>
+      <li>Parce que tu es reconnaissante pour ce que tu as.</li>
+      <li>Parce que tu crois en notre histoire malgré la distance.</li>
+      <li>Parce que tu es une main tendue pour ceux qui en ont besoin.</li>
+      <li>Parce que ta façon de raconter ta journée me fait sourire.</li>
+      <li>Parce que tu peux encore me surprendre, après tout ce temps.</li>
+      <li>Parce que tu ne te plains jamais pour rien.</li>
+      <li>Parce que tu es fière de nos petites victoires.</li>
+      <li>Parce que tu sais être sérieuse quand il le faut.</li>
+      <li>Parce que tu gardes toujours un mot doux pour moi, même fatiguée.</li>
+      <li>Parce que tu sais me pardonner mes maladresses.</li>
+      <li>Parce que tu es toujours honnête sur ce que tu ressens.</li>
+      <li>Parce que tu sais transformer une dispute en discussion.</li>
+      <li>Parce que tu es fidèle à ta parole.</li>
+      <li>Parce que tu vois toujours le bon côté des choses.</li>
+      <li>Parce que tu es fière de moi devant les autres.</li>
+      <li>Parce que tu prends soin de ta famille comme personne.</li>
+      <li>Parce que tu sais te battre pour ce que tu veux.</li>
+      <li>Parce que tu écoutes mes projets sans jamais me freiner.</li>
+      <li>Parce que tu es belle sans même chercher à l'être.</li>
+      <li>Parce que tu restes simple malgré tout ce que tu pourrais avoir.</li>
+      <li>Parce que tu peux m'apaiser rien qu'avec quelques mots.</li>
+      <li>Parce que tu es toujours partante pour de nouveaux projets ensemble.</li>
+      <li>Parce que tu sais dire non quand il le faut.</li>
+      <li>Parce que tu restes douce même quand tu es en colère.</li>
+      <li>Parce que tu me fais confiance.</li>
+      <li>Parce que tu devines quand ça ne va pas, même à distance.</li>
+      <li>Parce que tu m'encourages sans me materner.</li>
+      <li>Parce que tu es patiente face à mon caractère parfois têtu.</li>
+      <li>Parce que tu es fière de qui tu deviens.</li>
+      <li>Parce que tu crois toujours en un avenir meilleur pour nous deux.</li>
+      <li>Parce que tu sais rire de toi-même.</li>
+      <li>Parce que tu es toujours là, même dans le silence des textos qui tardent.</li>
+      <li>Parce que tu rends un simple "bonne nuit" doux comme tout.</li>
+      <li>Parce que tu es fière de ce que tu construis, petit à petit.</li>
+      <li>Parce que tu sais me remettre les idées en place quand j'en ai besoin.</li>
+      <li>Parce que tu es une source de paix dans ma vie.</li>
+      <li>Parce que tu m'aimes malgré mes absences.</li>
+      <li>Parce que tu es forte face aux épreuves de la distance.</li>
+      <li>Parce que tu gardes le sourire même loin des tiens.</li>
+      <li>Parce que tu es toujours honnête sur tes doutes.</li>
+      <li>Parce que tu sais rêver grand pour nous deux.</li>
+      <li>Parce que tu es fière de m'avoir choisi.</li>
+      <li>Parce que tu transformes un mauvais jour en bon souvenir.</li>
+      <li>Parce que tu sais m'aimer sans conditions.</li>
+      <li>Parce que tu es toujours prête à recommencer, même après une dispute.</li>
+      <li>Parce que tu m'inspires sans même le savoir.</li>
+      <li>Parce que tu es fière de nos différences.</li>
+      <li>Parce que tu m'apportes la paix rien qu'en existant.</li>
+      <li>Parce que tu es la personne que je choisis, chaque jour, encore et encore.</li>
+      <li>Parce que tu es celle avec qui je veux tout partager.</li>
+      <li>Parce que tu es exactement celle qu'il me fallait.</li>
+      <li>Parce que tu es toi, tout simplement, ma Beauté.</li>
+    </ol>
+
+    <div class="filet"></div>
+
+    <div class="actions">
+      <button class="bouton secondaire" onclick="ouvrirModale('modale-video')">🎬 Une vidéo d'une minute</button>
+      <button class="bouton indice" onclick="ouvrirModale('modale-indice')">🎁 Indice pour la suite</button>
+    </div>
+
+  
+  </main>
+</div>
+
+<div class="voile" id="modale-video">
+  <div class="boite">
+    <button class="fermer" onclick="fermerModale('modale-video')">✕</button>
+    <h2>Une minute rien que pour toi</h2>
+    <!-- Remplace "videos/video2.mp4" par le chemin de ta vraie vidéo -->
+    <video controls playsinline poster="">
+      <source src="videos/video2.mp4" type="video/mp4">
+      Ton navigateur ne peut pas lire cette vidéo.
+    </video>
+  </div>
+</div>
+
+<div class="voile" id="modale-indice">
+  <div class="boite">
+    <button class="fermer" onclick="fermerModale('modale-indice')">✕</button>
+    <h2>Deuxième indice</h2>
+    <p>Direction l'endroit où j'ai fait la connaissance de ton petit frère… et surtout, où j'ai découvert à quel point il a le cœur chaleureux.</p>
+  </div>
+</div>
+
+<script src="assets/lock.js"></script>
+<script src="assets/sparkle.js"></script>
+<script>
+  document.addEventListener("beaute:deverrouille", function(){
+    if(window.explosionConfettis) setTimeout(window.explosionConfettis, 300);
+  });
+</script>
+</body>
+</html>

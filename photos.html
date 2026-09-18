@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Nos souvenirs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,600&family=Parisienne&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+  body{ overflow:hidden; height:100vh; }
+  .entete{
+    position:fixed; top:0; left:0; right:0; z-index:20;
+    text-align:center;
+    padding: clamp(20px,5vh,42px) 20px 14px;
+    background: linear-gradient(to bottom, rgba(20,10,16,.92) 0%, rgba(20,10,16,.5) 75%, transparent 100%);
+    pointer-events:none;
+  }
+  .entete .eyebrow{ margin-bottom:6px; }
+  .entete h1{
+    font-family: var(--serif); font-style:italic; font-weight:600;
+    color: var(--ivoire); font-size: clamp(24px,6.5vw,38px); margin:0;
+    text-shadow: 0 4px 24px rgba(0,0,0,.5);
+  }
+  .ciel{ position:fixed; inset:0; z-index:5; }
+  .polaroid{
+    position:absolute; top:-25vh; width: 100px;
+    background: var(--ivoire); padding: 7px 7px 22px; border-radius: 2px;
+    box-shadow: 0 10px 24px rgba(0,0,0,.45);
+    animation-name: chute; animation-timing-function: linear; animation-iteration-count: infinite;
+  }
+  .polaroid img{ display:block; width:100%; aspect-ratio:1/1; object-fit:cover; border-radius:1px; background:#ccc; }
+  @keyframes chute{
+    0%{ transform: translateY(0) translateX(0) rotate(var(--r0)); }
+    50%{ transform: translateY(60vh) translateX(var(--sway)) rotate(var(--r1)); }
+    100%{ transform: translateY(130vh) translateX(0) rotate(var(--r2)); }
+  }
+  .bas{
+    position:fixed; bottom:0; left:0; right:0; z-index:20;
+    display:flex; flex-direction:column; align-items:center; gap:10px;
+    padding: 18px 20px calc(18px + env(safe-area-inset-bottom));
+    background: linear-gradient(to top, rgba(20,10,16,.92) 0%, rgba(20,10,16,.5) 75%, transparent 100%);
+  }
+  .astuce{ color: rgba(246,236,217,.55); font-size:11px; letter-spacing:.05em; margin:0; }
+
+  .loupe{
+    position:fixed; inset:0; z-index:60; display:none; align-items:center; justify-content:center;
+    background: rgba(10,5,9,.9); padding:24px;
+  }
+  .loupe.ouvert{ display:flex; }
+  .loupe img{
+    max-width:min(82vw,420px); max-height:72vh; border-radius:2px;
+    background: var(--ivoire); padding: 10px 10px 26px; box-shadow: 0 20px 60px rgba(0,0,0,.6);
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    body{ overflow:auto; height:auto; }
+    .polaroid{ animation:none !important; position:static; display:inline-block; margin:6px; top:auto; }
+    .ciel{ position:static; display:flex; flex-wrap:wrap; justify-content:center; padding: 150px 12px 120px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===================== Écran de verrouillage ===================== -->
+<div class="verrou" id="verrou">
+  <div class="verrou-carte" id="verrou-carte">
+    <div class="icone">🔒</div>
+    <h1>Pour toi seule</h1>
+    <p>Cette page t'est réservée, ma Beauté.</p>
+    <form id="verrou-form">
+      <input type="password" id="verrou-input" placeholder="Mot de passe" autocomplete="off" required>
+      <div class="erreur" id="verrou-erreur"></div>
+      <button type="submit" class="bouton">Ouvrir</button>
+    </form>
+  </div>
+</div>
+
+<div class="contenu" id="contenu">
+  <header class="entete">
+    <span class="eyebrow">79 souvenirs</span>
+    <h1>Chaque photo raconte un peu de nous</h1>
+  </header>
+
+  <div class="ciel" id="ciel"></div>
+
+  <div class="bas">
+    <p class="astuce">touche une photo pour l'agrandir</p>
+    <a class="bouton secondaire" href="index.html">← Retour pour la suite</a>
+  </div>
+</div>
+
+<div class="loupe" id="loupe">
+  <img id="loupe-img" src="" alt="Souvenir agrandi">
+</div>
+
+<script>
+  // Remplace chaque URL par tes vraies photos (ou un chemin local, ex. "photos/photo1.jpg")
+ const photos = [
+  "photos/photo1.jpg","photos/photo2.jpg","photos/photo3.jpg","photos/photo4.jpg",
+  "photos/photo5.jpg","photos/photo6.jpg","photos/photo7.jpg","photos/photo8.jpg",
+  "photos/photo9.jpg","photos/photo10.jpg","photos/photo11.jpg","photos/photo12.jpg",
+  "photos/photo13.jpg","photos/photo14.jpg","photos/photo15.jpg","photos/photo16.jpg",
+  "photos/photo17.jpg","photos/photo18.jpg","photos/photo19.jpg","photos/photo20.jpg",
+  "photos/photo21.jpg","photos/photo22.jpg","photos/photo23.jpg","photos/photo24.jpg",
+  "photos/photo25.jpg","photos/photo26.jpg","photos/photo27.jpg","photos/photo28.jpg",
+  "photos/photo29.jpg","photos/photo30.jpg","photos/photo31.jpg","photos/photo32.jpg",
+  "photos/photo33.jpg","photos/photo34.jpg","photos/photo35.jpg","photos/photo36.jpg",
+  "photos/photo37.jpg","photos/photo38.jpg","photos/photo39.jpg","photos/photo40.jpg",
+  "photos/photo41.jpg","photos/photo42.jpg","photos/photo43.jpg","photos/photo44.jpg",
+  "photos/photo45.jpg","photos/photo46.jpg","photos/photo47.jpg","photos/photo48.jpg",
+  "photos/photo49.jpg","photos/photo50.jpg","photos/photo51.jpg","photos/photo52.jpg",
+  "photos/photo53.jpg","photos/photo54.jpg","photos/photo55.jpg","photos/photo56.jpg",
+  "photos/photo57.jpg","photos/photo58.jpg","photos/photo59.jpg","photos/photo60.jpg",
+  "photos/photo61.jpg","photos/photo62.jpg","photos/photo63.jpg","photos/photo64.jpg",
+  "photos/photo65.jpg","photos/photo66.jpg","photos/photo67.jpg","photos/photo68.jpg",
+  "photos/photo69.jpg","photos/photo70.jpg","photos/photo71.jpg","photos/photo72.jpg",
+  "photos/photo73.jpg","photos/photo74.jpg","photos/photo75.jpg","photos/photo76.jpg",
+  "photos/photo77.jpg","photos/photo78.jpg","photos/photo79.jpg"
+];
+
+  function rand(a,b){ return Math.random()*(b-a)+a; }
+
+  function construireCiel(){
+    const ciel = document.getElementById("ciel");
+    ciel.innerHTML = "";
+    photos.forEach(function(src, i){
+      const carte = document.createElement("div");
+      carte.className = "polaroid";
+      const gauche = rand(2,88), taille = rand(78,124), duree = rand(11,19), delai = -rand(0,duree);
+      carte.style.left = gauche + "vw";
+      carte.style.width = taille + "px";
+      carte.style.animationDuration = duree + "s";
+      carte.style.animationDelay = delai + "s";
+      carte.style.setProperty("--r0", rand(-12,12)+"deg");
+      carte.style.setProperty("--r1", rand(-18,18)+"deg");
+      carte.style.setProperty("--r2", rand(-12,12)+"deg");
+      carte.style.setProperty("--sway", rand(-40,40)+"px");
+
+      const img = document.createElement("img");
+      img.src = src; img.alt = "Souvenir " + (i+1); img.loading = "lazy";
+      carte.appendChild(img);
+      carte.addEventListener("click", function(){
+        document.getElementById("loupe-img").src = src;
+        document.getElementById("loupe").classList.add("ouvert");
+      });
+      ciel.appendChild(carte);
+    });
+  }
+
+  document.getElementById("loupe").addEventListener("click", function(){
+    this.classList.remove("ouvert");
+  });
+
+  document.addEventListener("beaute:deverrouille", construireCiel);
+  // Si déjà déverrouillée (localStorage), lock.js déclenche aussi l'évènement ci-dessus.
+</script>
+<script src="assets/lock.js"></script>
+</body>
+</html>

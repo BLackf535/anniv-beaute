@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Ta présence dans ma vie</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,600&family=Parisienne&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<canvas id="paillettes"></canvas>
+
+<div class="verrou" id="verrou">
+  <div class="verrou-carte" id="verrou-carte">
+    <div class="icone">🔒</div>
+    <h1>Pour toi seule</h1>
+    <p>Cette page t'est réservée, ma Beauté.</p>
+    <form id="verrou-form">
+      <input type="password" id="verrou-input" placeholder="Mot de passe" autocomplete="off" required>
+      <div class="erreur" id="verrou-erreur"></div>
+      <button type="submit" class="bouton">Ouvrir</button>
+    </form>
+  </div>
+</div>
+
+<div class="contenu" id="contenu">
+  <main class="page">
+
+    <span class="eyebrow">Étape 3</span>
+    <h1 class="titre">Ta place dans ma vie</h1>
+
+    <div class="texte">
+      <p>Avant toi, ma vie avançait bien, mais elle avançait comme une routine : les journées se suivaient, les projets s'enchaînaient, et je n'y pensais pas vraiment. Depuis toi, tout a une couleur différente. Même les journées ordinaires ont quelque chose de spécial, parce que je sais qu'à un moment ou un autre, on va se retrouver, même si c'est juste à travers un écran.</p>
+
+      <p>Tu es devenue ce petit repère que je cherche sans m'en rendre compte : quand quelque chose de bien m'arrive, tu es la première personne à qui je veux le raconter. Quand quelque chose me pèse, ta voix suffit à alléger les choses. Je ne sais pas exactement quand c'est arrivé, mais à un moment, tu es passée du statut de "quelqu'un d'important" à celui de "quelqu'un d'essentiel".</p>
+
+      <p>Il y a quelque chose de rassurant à savoir que, peu importe où je suis, il y a quelqu'un quelque part qui pense à moi de la même façon que je pense à elle. Tu fais partie de mes projets, de mes envies, de la manière dont j'imagine la suite. Tu n'es pas à côté de ma vie, tu es dedans, et ça change tout.</p>
+
+      <p>Alors aujourd'hui, en plus de te souhaiter un bel anniversaire, je voulais simplement te dire merci. Merci d'être restée, merci de continuer malgré mes conneries, merci de faire l'effort chaque jour pour qu'on reste proches malgré la distance. Ce n'est pas rien, et je ne le prends jamais pour acquis.</p>
+
+      <span class="signature">— Toujours ton Ferdinand</span>
+    </div>
+
+    <div class="filet"></div>
+
+    <div class="actions">
+      <button class="bouton secondaire" onclick="ouvrirModale('modale-video')">🎬 Une petite vidéo</button>
+      <button class="bouton indice" onclick="ouvrirModale('modale-indice')">🎁 Indice pour la suite</button>
+    </div>
+
+    
+  </main>
+</div>
+
+<div class="voile" id="modale-video">
+  <div class="boite">
+    <button class="fermer" onclick="fermerModale('modale-video')">✕</button>
+    <h2>Pour toi</h2>
+    <!-- Remplace "videos/video3.mp4" par le chemin de ta vraie vidéo -->
+    <video controls playsinline poster="">
+      <source src="videos/video3.mp4" type="video/mp4">
+      Ton navigateur ne peut pas lire cette vidéo.
+    </video>
+  </div>
+</div>
+
+<div class="voile" id="modale-indice">
+  <div class="boite">
+    <button class="fermer" onclick="fermerModale('modale-indice')">✕</button>
+    <h2>Troisième indice</h2>
+    <p>Là-bas, tu retrouveras quelqu'un qu'on connaît tous les deux, et qui t'aime beaucoup elle aussi. Elle a changé de voie récemment, du côté de l'informatique... un peu comme moi.</p>
+  </div>
+</div>
+
+<script src="assets/lock.js"></script>
+<script src="assets/sparkle.js"></script>
+<script>
+  document.addEventListener("beaute:deverrouille", function(){
+    if(window.explosionConfettis) setTimeout(window.explosionConfettis, 300);
+  });
+</script>
+</body>
+</html>

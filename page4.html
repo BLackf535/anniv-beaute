@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Toujours là pour toi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,600&family=Parisienne&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<canvas id="paillettes"></canvas>
+
+<div class="verrou" id="verrou">
+  <div class="verrou-carte" id="verrou-carte">
+    <div class="icone">🔒</div>
+    <h1>Pour toi seule</h1>
+    <p>Cette page t'est réservée, ma Beauté.</p>
+    <form id="verrou-form">
+      <input type="password" id="verrou-input" placeholder="Mot de passe" autocomplete="off" required>
+      <div class="erreur" id="verrou-erreur"></div>
+      <button type="submit" class="bouton">Ouvrir</button>
+    </form>
+  </div>
+</div>
+
+<div class="contenu" id="contenu">
+  <main class="page">
+
+    <span class="eyebrow">Étape 4</span>
+    <h1 class="titre">Bien plus qu'un amoureux</h1>
+
+    <div class="texte">
+      <p>On parle souvent d'amour comme si c'était la seule chose qui comptait dans un couple, mais je crois que ce qui rend notre histoire solide, c'est aussi tout ce qu'il y a autour : l'amitié, la confiance, le fait de savoir qu'on peut compter l'un sur l'autre même les jours où rien ne va.</p>
+
+      <p>Tu as des amis qui t'aiment et qui sont là pour toi, et c'est important, je le sais et j'en suis heureux pour toi. Mais je veux que tu saches une chose : moi aussi, tu peux toujours compter sur moi, pas seulement comme ton copain, mais comme quelqu'un qui sera toujours dans ton coin, prêt à t'écouter, à te conseiller, à te faire rire quand il le faut, ou juste à être là en silence si c'est ce dont tu as besoin.</p>
+
+      <p>Que la distance ne changera jamais ça. Que ce soit pour une bonne nouvelle à fêter, un coup dur à traverser, ou juste une journée banale où tu as besoin de parler à quelqu'un, je serai là. Pas parfait, pas toujours au bon moment vu le décalage des problèmes et la compréhension, mais toujours là.</p>
+
+      <p>Alors peu importe ce que la vie nous réserve, garde ça en tête : tu as en moi bien plus qu'un amoureux, tu as quelqu'un sur qui tu peux t'appuyer, aujourd'hui, demain, et après.</p>
+
+      <span class="signature">— Ton Ferdinand, pour toujours dans le coin</span>
+    </div>
+
+    <div class="filet"></div>
+
+    <div class="actions">
+      <button class="bouton secondaire" onclick="ouvrirModale('modale-video')">🎬 Une petite vidéo</button>
+      <button class="bouton indice" onclick="ouvrirModale('modale-indice')">🎁 Dernier indice</button>
+    </div>
+
+    
+  </main>
+</div>
+
+<div class="voile" id="modale-video">
+  <div class="boite">
+    <button class="fermer" onclick="fermerModale('modale-video')">✕</button>
+    <h2>Pour toi</h2>
+    <!-- Remplace "videos/video4.mp4" par le chemin de ta vraie vidéo -->
+    <video controls playsinline poster="">
+      <source src="videos/video4.mp4" type="video/mp4">
+      Ton navigateur ne peut pas lire cette vidéo.
+    </video>
+  </div>
+</div>
+
+<div class="voile" id="modale-indice">
+  <div class="boite">
+    <button class="fermer" onclick="fermerModale('modale-indice')">✕</button>
+    <h2>Dernier indice</h2>
+    <!-- ⚠️ À compléter une fois le restaurant choisi : nom, adresse, heure -->
+    <p>Pour cette dernière étape, retrouve-moi à [nom du restaurant à compléter], à [heure à compléter]. Viens telle que tu es, je t'attendrai là-bas.</p>
+  </div>
+</div>
+
+<script src="assets/lock.js"></script>
+<script src="assets/sparkle.js"></script>
+<script>
+  document.addEventListener("beaute:deverrouille", function(){
+    if(window.explosionConfettis) setTimeout(window.explosionConfettis, 300);
+  });
+</script>
+</body>
+</html>

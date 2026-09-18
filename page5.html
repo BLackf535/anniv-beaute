@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Merci, ma Beauté</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Cormorant+Garamond:ital@1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+  body{
+    background: radial-gradient(ellipse 120% 60% at 50% -10%, var(--bordeaux-3) 0%, var(--bordeaux-1) 45%, var(--noir) 100%);
+    min-height:100vh;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .cahier{
+    width: min(92vw, 520px);
+    background: #fbf6ec;
+    border-radius: 4px;
+    box-shadow: 0 30px 80px rgba(0,0,0,.55), inset 0 0 0 1px rgba(0,0,0,.04);
+    padding: clamp(36px, 8vw, 56px) clamp(26px, 7vw, 46px);
+    position:relative;
+    background-image: repeating-linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent 43px,
+      rgba(109,26,52,.12) 44px
+    );
+    background-position: 0 8px;
+  }
+  .cahier::before{
+    content:"";
+    position:absolute;
+    left: 34px; top:0; bottom:0;
+    width:1px;
+    background: rgba(180,60,90,.25);
+  }
+  .marque{
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: rgba(74,18,38,.5);
+    font-size: 13px;
+    text-align:center;
+    margin: 0 0 18px;
+    letter-spacing:.04em;
+  }
+  #ecriture{
+    font-family: 'Caveat', cursive;
+    font-size: clamp(26px, 6.4vw, 34px);
+    line-height: 1.55;
+    color: #3a1220;
+    white-space: pre-wrap;
+    min-height: 220px;
+  }
+  #curseur{
+    display:inline-block;
+    width: 2px;
+    background: #3a1220;
+    animation: clignote 0.9s steps(1) infinite;
+    margin-left: 1px;
+    height: 0.9em;
+    vertical-align: middle;
+  }
+  @keyframes clignote{ 50%{ opacity:0; } }
+
+  .verrou-carte h1, .verrou-carte p, .verrou-carte .icone{ color: var(--ivoire); }
+</style>
+</head>
+<body>
+
+<canvas id="paillettes"></canvas>
+
+<div class="verrou" id="verrou">
+  <div class="verrou-carte" id="verrou-carte">
+    <div class="icone">🔒</div>
+    <h1>Pour toi seule</h1>
+    <p>Cette page t'est réservée, ma Beauté.</p>
+    <form id="verrou-form">
+      <input type="password" id="verrou-input" placeholder="Mot de passe" autocomplete="off" required>
+      <div class="erreur" id="verrou-erreur"></div>
+      <button type="submit" class="bouton">Ouvrir</button>
+    </form>
+  </div>
+</div>
+
+<div class="contenu" id="contenu">
+  <div class="cahier">
+    <p class="marque">— pour toi —</p>
+    <div id="ecriture"><span id="curseur"></span></div>
+  </div>
+</div>
+
+<script src="assets/lock.js"></script>
+<script src="assets/sparkle.js"></script>
+<script>
+  const message = "Merci pour tout ma Beauté,\nje serai toujours là pour toi ;\nje t'aime beaucoup beaucoup\nbeaucoup beaucoup !!!!   \nHskabuheue iyzbioehu❤️❤️😍 ";
+
+  function ecrireProgressivement(){
+    const zone = document.getElementById("ecriture");
+    const curseur = document.getElementById("curseur");
+    let i = 0;
+    const vitesse = 55; // millisecondes entre chaque lettre
+
+    function etape(){
+      if(i <= message.length){
+        zone.textContent = message.slice(0, i);
+        zone.appendChild(curseur);
+        i++;
+        setTimeout(etape, vitesse);
+      } else {
+        if(window.explosionConfettis) window.explosionConfettis();
+      }
+    }
+    etape();
+  }
+
+  document.addEventListener("beaute:deverrouille", function(){
+    setTimeout(ecrireProgressivement, 400);
+  });
+</script>
+</body>
+</html>

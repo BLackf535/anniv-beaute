@@ -78,6 +78,10 @@
 </div>
 
 <div class="contenu" id="contenu">
+    <button class="bouton-musique" id="bouton-musique" aria-label="Couper / remettre la musique">🔊</button>
+  <audio id="musique-fond" loop preload="auto">
+    <source src="musique/musique.mp3" type="audio/mpeg">
+  </audio>
   <header class="entete">
     <span class="eyebrow">79 souvenirs</span>
     <h1>Chaque photo raconte un peu de nous</h1>
@@ -155,6 +159,26 @@
 
   document.addEventListener("beaute:deverrouille", construireCiel);
   // Si déjà déverrouillée (localStorage), lock.js déclenche aussi l'évènement ci-dessus.
+
+    document.addEventListener("beaute:deverrouille", function(){
+    const musique = document.getElementById("musique-fond");
+    if(musique) musique.play().catch(function(){ /* lecture auto bloquée, elle pourra cliquer sur le bouton */ });
+  });
+
+  const boutonMusique = document.getElementById("bouton-musique");
+  if(boutonMusique){
+    boutonMusique.addEventListener("click", function(){
+      const musique = document.getElementById("musique-fond");
+      if(!musique) return;
+      if(musique.paused){
+        musique.play();
+        boutonMusique.textContent = "🔊";
+      } else {
+        musique.pause();
+        boutonMusique.textContent = "🔇";
+      }
+    });
+  }
 </script>
 <script src="assets/lock.js"></script>
 </body>
